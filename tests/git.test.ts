@@ -1,4 +1,5 @@
-import { parseParentsOfGitCatFile } from '../src/git'
+import { describe, expect, test } from 'vitest'
+import { parseParentsOfGitCatFile } from '../src/git.js'
 
 describe('parseParentsOfGitCatFile', () => {
   test('merge commit', () => {
@@ -20,7 +21,7 @@ gpgsig -----BEGIN PGP SIGNATURE-----
   -----END PGP SIGNATURE-----
 
 
-Merge b8499467560ea7c46fe4ed6837c264f4ad15fd8a into c3a9301749696252fc2c2e5658d1e2e9170ca447`
+Merge b8499467560ea7c46fe4ed6837c264f4ad15fd8a into c3a9301749696252fc2c2e5658d1e2e9170ca447`,
     )
     expect(parents).toStrictEqual([
       'c3a9301749696252fc2c2e5658d1e2e9170ca447',
@@ -35,7 +36,7 @@ parent 4d763299eef55d4b4285f5259876ff462b55017c
 author Example <example@example.com> 1681562385 +0900
 committer Example <example@example.com> 1681562385 +0900
 
-Dummy`
+Dummy`,
     )
     expect(parents).toStrictEqual(['4d763299eef55d4b4285f5259876ff462b55017c'])
   })

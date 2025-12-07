@@ -9,15 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
-      - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+      - uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
         with:
-          node-version: 16
-          cache: yarn
-      - run: yarn
-      - run: yarn build
-      - run: yarn package
-      - run: date > TIMESTAMP
+          node-version-file: .node-version
+          package-manager-cache: false
+      - run: npm install -g pnpm@latest-10
+      - run: pnpm i
+      - run: pnpm build
 
+      - run: date > TIMESTAMP
       - name: update-generated-files
         uses: ./
