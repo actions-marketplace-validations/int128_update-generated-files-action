@@ -2,7 +2,8 @@
   "private": true,
   "scripts": {
     "build": "ncc build --source-map --license licenses.txt src/main.ts",
-    "test": "vitest"
+    "test": "vitest",
+    "check": "biome migrate --write && biome check --fix"
   },
   "type": "module",
   "dependencies": {
@@ -20,7 +21,7 @@
     "js-yaml": "4.1.1",
     "pnpm": "10.24.0",
     "typescript": "5.9.3",
-    "vitest": "4.0.14"
+    "vitest": "4.0.15"
   },
   "packageManager": "pnpm@10.24.0"
 }
