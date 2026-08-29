@@ -8,7 +8,7 @@ import { handlePullRequestEvent } from './pull_request_event.js'
 export type Inputs = {
   commitMessage: string
   commitMessageFooter: string
-  headBranch: string
+  headBranchKeys: string[]
   title: string
   body: string
   draft: boolean
@@ -32,7 +32,7 @@ export const run = async (inputs: Inputs, context: Context, octokit: Octokit): P
     return {}
   }
   if (contextIsPullRequestEvent(context)) {
-    return await handlePullRequestEvent(inputs, context)
+    return await handlePullRequestEvent(inputs, context, octokit)
   }
   return await handleOtherEvent(inputs, context, octokit)
 }
